@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "dependencies": {
+    "@theia/core": "next",
+    "@theia/filesystem": "next",
+    "@theia/workspace": "next",
+    "@theia/preferences": "next",
+    "@theia/navigator": "next",
+    "@theia/process": "next",
+    "@theia/terminal": "next",
+    "@theia/editor": "next",
+    "@theia/languages": "next",
+    "@theia/monaco": "next"
+  },
+  "scripts": {
+    "prepare": "npx electron-rebuild"
+  }
+}
