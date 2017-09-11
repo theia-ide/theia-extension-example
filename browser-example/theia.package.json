@@ -10,6 +10,7 @@
     "@theia/terminal": "next",
     "@theia/editor": "next",
     "@theia/languages": "next",
-    "@theia/monaco": "next"
+    "@theia/monaco": "next",
+    "theia-markdown": "../theia-markdown"
   }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "theia-markdown",
+  "version": "0.0.0",
+  "description": "Theia Markdown Extension",
+  "keywords": [
+    "theia-extension"
+  ],
+  "author": "Project Theia",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theia-ide/theia-extension-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theia-ide/theia-extension-example/issues"
+  },
+  "homepage": "https://github.com/theia-ide/theia-extension-example",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@theia/core": "next",
+    "@theia/filesystem": "next",
+    "@types/markdown-it": "0.0.4",
+    "markdown-it": "^8.4.0"
+  },
+  "scripts": {
+    "prepare": "npm run clean && npm run compile",
+    "clean": "rimraf lib",
+    "compile": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "typescript": "^2.5.2"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/markdown-frontend-module"
+    }
+  ]
+}
