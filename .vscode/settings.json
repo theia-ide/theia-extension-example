@@ -1,0 +1,31 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/.yo-rc.json"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "generator-theia": {
+            "type": "object",
+            "properties": {
+              "copyright": {
+                "type": "string"
+              },
+              "node_modulesPath": {
+                "type": "string"
+              },
+              "localDependencies": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

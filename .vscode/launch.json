@@ -15,7 +15,7 @@
             ],
             "sourceMaps": true,
             "outFiles": [
-                "${workspaceRoot}/browser-example/node_modules/@theia/*/lib/**/*.js",
+                "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
                 "${workspaceRoot}/browser-example/lib/**/*.js",
                 "${workspaceRoot}/browser-example/src-gen/**/*.js"
             ]

@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "electron-example",
+  "version": "0.0.0",
   "dependencies": {
     "@theia/core": "next",
     "@theia/filesystem": "next",
@@ -11,9 +12,6 @@
     "@theia/editor": "next",
     "@theia/languages": "next",
     "@theia/monaco": "next",
-    "theia-markdown": "../theia-markdown"
-  },
-  "scripts": {
-    "prepare": "npx electron-rebuild"
+    "theia-markdown": "0.0.0"
   }
 }

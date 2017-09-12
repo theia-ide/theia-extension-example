@@ -1,7 +1,6 @@
 node_modules
 lib
 *.log
-.yo-rc.json
 src-gen
 *-example/webpack.config.js
 *-example/package.json

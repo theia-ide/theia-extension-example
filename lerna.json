@@ -1,0 +1,10 @@
+{
+  "lerna": "2.1.2",
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "packages": [
+    "theia-markdown",
+    "browser-example",
+    "electron-example"
+  ]
+}

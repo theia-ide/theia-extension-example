@@ -26,9 +26,9 @@
     "markdown-it": "^8.4.0"
   },
   "scripts": {
-    "prepare": "npm run clean && npm run compile",
+    "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "compile": "tsc",
+    "build": "tsc",
     "watch": "tsc -w"
   },
   "devDependencies": {
