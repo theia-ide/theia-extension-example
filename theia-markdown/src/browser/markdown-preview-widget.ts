@@ -8,19 +8,21 @@
 import { Resource } from '@theia/core';
 import { BaseWidget, Message } from '@theia/core/lib/browser';
 
+export const MARKDOWN_WIDGET_CLASS = 'theia-markdown-widget';
+
 export class MarkdownPreviewWidget extends BaseWidget {
 
     constructor(
         protected readonly resource: Resource
     ) {
         super();
-        this.addClass('theia-markdown-widget');
+        this.addClass(MARKDOWN_WIDGET_CLASS);
         this.node.tabIndex = 0;
-        this.update();
         this.toDispose.push(resource);
         if (resource.onDidChangeContents) {
             this.toDispose.push(resource.onDidChangeContents(() => this.update()));
         }
+        this.update();
     }
 
     onActivateRequest(msg: Message): void {
@@ -31,10 +33,9 @@ export class MarkdownPreviewWidget extends BaseWidget {
 
     onUpdateRequest(msg: Message): void {
         super.onUpdateRequest(msg);
-        this.resource.readContents().then(html => {
+        this.resource.readContents().then(html =>
             this.node.innerHTML = html
-            this.update();
-        });
+        );
     }
 
 }
