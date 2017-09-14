@@ -7,7 +7,7 @@
 
 import { injectable, inject } from 'inversify';
 import URI from '@theia/core/lib/common/uri';
-import { ResourceProvider, Resource } from '@theia/core/lib/common';
+import { ResourceProvider } from '@theia/core/lib/common';
 import { OpenHandler, FrontendApplication } from '@theia/core/lib/browser';
 import { MarkdownUri } from './markdown-uri';
 import { MarkdownPreviewWidget } from './markdown-preview-widget';
@@ -16,7 +16,7 @@ import { MarkdownPreviewWidget } from './markdown-preview-widget';
 export class MarkdownPreviewOpenHandler implements OpenHandler {
 
     readonly id = 'markdown.openPreview';
-    readonly label = 'Markdown: Open Preview';
+    readonly label = 'Open Preview';
 
     protected widgetSequence = 0;
     protected readonly widgets = new Map<string, Promise<MarkdownPreviewWidget>>();
@@ -31,7 +31,12 @@ export class MarkdownPreviewOpenHandler implements OpenHandler {
     protected readonly resourceProvider: ResourceProvider;
 
     canHandle(uri: URI): number {
-        return !!this.markdownUri.to(uri) ? 200 : 0;
+        try {
+            this.markdownUri.to(uri);
+            return 50;
+        } catch {
+            return 0;
+        }
     }
 
     async open(uri: URI): Promise<MarkdownPreviewWidget | undefined> {
@@ -45,15 +50,17 @@ export class MarkdownPreviewOpenHandler implements OpenHandler {
         if (widget) {
             return widget;
         }
-        const markdownUri = this.markdownUri.to(uri);
-        const promise = this.resourceProvider(markdownUri).then(resource =>
-            this.createWidget(uri, resource)
-        );
+        const promise = this.createWidget(uri);
+        promise.then(widget => widget.disposed.connect(() =>
+            this.widgets.delete(uri.toString())
+        ));
         this.widgets.set(uri.toString(), promise);
         return promise;
     }
 
-    protected createWidget(uri: URI, resource: Resource): MarkdownPreviewWidget {
+    protected async createWidget(uri: URI): Promise<MarkdownPreviewWidget> {
+        const markdownUri = this.markdownUri.to(uri);
+        const resource = await this.resourceProvider(markdownUri)
         const widget = new MarkdownPreviewWidget(resource);
         widget.id = `markdown-preview-` + this.widgetSequence++;
         widget.title.label = `Preview '${uri.path.base}'`;

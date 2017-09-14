@@ -12,6 +12,8 @@ import { MarkdownUri } from "./markdown-uri";
 import { MarkdownPreviewOpenHandler } from "./markdown-preview-open-handler";
 import { MarkdownResourceResolver } from "./markdown-resource";
 
+import '../../src/browser/style/index.css';
+
 export default new ContainerModule(bind => {
     bind(MarkdownUri).toSelf().inSingletonScope();
 

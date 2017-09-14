@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Backend",
+            "name": "Start Browser Backend",
             "program": "${workspaceRoot}/browser-example/src-gen/backend/main.js",
             "args": [
                 "--loglevel=debug",
@@ -18,6 +18,28 @@
                 "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
                 "${workspaceRoot}/browser-example/lib/**/*.js",
                 "${workspaceRoot}/browser-example/src-gen/**/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Start Electron Backend",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+            },
+            "program": "${workspaceRoot}/electron-example/src-gen/frontend/electron-main.js",
+            "protocol": "inspector",
+            "args": [
+                "--loglevel=debug",
+                "--hostname=localhost"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/electron-example/src-gen/frontend/electron-main.js",
+                "${workspaceRoot}/electron-example/src-gen/backend/main.js",
+                "${workspaceRoot}/electron-example/lib/**/*.js",
+                "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js"
             ]
         }
     ]

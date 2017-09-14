@@ -10,18 +10,18 @@ import URI from "@theia/core/lib/common/uri";
 
 @injectable()
 export class MarkdownUri {
-    public static scheme = 'markdown:';
+    public static schemePrefix = 'markdown.';
     from(markdownUri: URI): URI {
         const scheme = markdownUri.scheme;
-        if (!scheme.startsWith(MarkdownUri.scheme)) {
+        if (!scheme.startsWith(MarkdownUri.schemePrefix)) {
             throw new Error('The given URI is not a markdown URI, ' + markdownUri);
         }
-        return markdownUri.withScheme(scheme.substr(MarkdownUri.scheme.length));
+        return markdownUri.withScheme(scheme.substr(MarkdownUri.schemePrefix.length));
     }
     to(uri: URI): URI {
-        if (uri.path.ext !== 'md') {
+        if (uri.path.ext !== '.md') {
             throw new Error('The given URI is not a markdown URI, ' + uri);
         }
-        return uri.withScheme(MarkdownUri.scheme + uri.scheme);
+        return uri.withScheme(MarkdownUri.schemePrefix + uri.scheme);
     }
 }

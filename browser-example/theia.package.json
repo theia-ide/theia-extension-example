@@ -12,6 +12,7 @@
     "@theia/editor": "next",
     "@theia/languages": "next",
     "@theia/monaco": "next",
+    "@theia/typescript": "next",
     "theia-markdown": "0.0.0"
   }
 }

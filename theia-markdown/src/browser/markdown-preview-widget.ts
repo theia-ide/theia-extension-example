@@ -6,15 +6,32 @@
  */
 
 import { Resource } from '@theia/core';
-import { BaseWidget } from '@theia/core/lib/browser';
+import { BaseWidget, Message } from '@theia/core/lib/browser';
 
 export class MarkdownPreviewWidget extends BaseWidget {
 
     constructor(
-        resource: Resource
+        protected readonly resource: Resource
     ) {
         super();
-        resource.readContents().then(html => {
+        this.addClass('theia-markdown-widget');
+        this.node.tabIndex = 0;
+        this.update();
+        this.toDispose.push(resource);
+        if (resource.onDidChangeContents) {
+            this.toDispose.push(resource.onDidChangeContents(() => this.update()));
+        }
+    }
+
+    onActivateRequest(msg: Message): void {
+        super.onActivateRequest(msg);
+        this.node.focus();
+        this.update();
+    }
+
+    onUpdateRequest(msg: Message): void {
+        super.onUpdateRequest(msg);
+        this.resource.readContents().then(html => {
             this.node.innerHTML = html
             this.update();
         });
