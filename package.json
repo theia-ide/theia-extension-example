@@ -1,19 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "prepare": "yarn generate && yarn bootstrap && yarn run clean && yarn build",
-    "generate": "yarn generate:browser && yarn generate:electron",
-    "generate:browser": "cd browser-example && yo theia:browser --force",
-    "generate:electron": "cd electron-example && yo theia:electron --force",
-    "bootstrap": "lerna bootstrap --hoist -- --no-optional",
-    "clean": "lerna run clean --parallel",
-    "build": "lerna run build --stream",
-    "rebuild:browser": "theia-rebuild --target=browser",
-    "rebuild:electron": "theia-rebuild --target=electron"
+    "prepare": "lerna run prepare",
+    "rebuild:browser": "theia rebuild --target=browser",
+    "rebuild:electron": "theia rebuild --target=electron"
   },
   "devDependencies": {
-    "lerna": "^2.1.2",
-    "yo": "^2.0.0",
-    "generator-theia": "next"
-  }
+    "lerna": "^2.3.1"
+  },
+  "workspaces": [
+    "theia-markdown",
+    "browser-example",
+    "electron-example"
+  ]
 }

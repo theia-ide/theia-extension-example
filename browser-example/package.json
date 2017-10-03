@@ -14,5 +14,13 @@
     "@theia/monaco": "next",
     "@theia/typescript": "next",
     "theia-markdown": "0.0.0"
+  },
+  "devDependencies": {
+    "@theia/cli": "next"
+  },
+  "scripts": {
+    "prepare": "theia generate --target=browser && theia build",
+    "start": "theia browser",
+    "watch": "theia build --watch"
   }
 }

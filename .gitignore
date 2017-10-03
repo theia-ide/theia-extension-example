@@ -2,7 +2,5 @@ node_modules
 .browser_modules
 lib
 *.log
-src-gen
-*-example/webpack.config.js
-*-example/package.json
-*-example/package-lock.json
+*-example/*
+!*-example/package.json

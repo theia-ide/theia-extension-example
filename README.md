@@ -5,9 +5,17 @@ The example of how to build the Theia-based app with the custom markdown extensi
 
 ## Getting started
 
+Install [nvm](https://github.com/creationix/nvm#install-script).
+
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+
+Install npm and node.
+
+    nvm install 8
+
 Install yarn.
 
-    npm install -g yarn@latest
+    npm install -g yarn@1.0.2
 
 Clone the repo.
 

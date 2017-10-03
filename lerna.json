@@ -1,10 +1,11 @@
 {
-  "lerna": "2.1.2",
+  "lerna": "2.3.1",
   "version": "0.0.0",
+  "useWorkspaces": true,
   "npmClient": "yarn",
-  "packages": [
-    "theia-markdown",
-    "browser-example",
-    "electron-example"
-  ]
+  "command": {
+    "run": {
+      "stream": true
+    }
+  }
 }

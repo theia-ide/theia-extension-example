@@ -18,15 +18,17 @@
                 "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
                 "${workspaceRoot}/browser-example/lib/**/*.js",
                 "${workspaceRoot}/browser-example/src-gen/**/*.js"
-            ]
+            ],
+            "smartStep": true,
+            "console": "integratedTerminal"
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Start Electron Backend",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/@theia/cli/node_modules/.bin/electron",
             "windows": {
-                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+                "runtimeExecutable": "${workspaceRoot}/node_modules/@theia/cli/node_modules/.bin/electron.cmd"
             },
             "program": "${workspaceRoot}/electron-example/src-gen/frontend/electron-main.js",
             "protocol": "inspector",
@@ -40,7 +42,9 @@
                 "${workspaceRoot}/electron-example/src-gen/backend/main.js",
                 "${workspaceRoot}/electron-example/lib/**/*.js",
                 "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js"
-            ]
+            ],
+            "smartStep": true,
+            "console": "integratedTerminal"
         }
     ]
 }
