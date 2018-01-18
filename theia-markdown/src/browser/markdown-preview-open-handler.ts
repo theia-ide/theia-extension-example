@@ -41,7 +41,7 @@ export class MarkdownPreviewOpenHandler implements OpenHandler {
 
     async open(uri: URI): Promise<MarkdownPreviewWidget | undefined> {
         const widget = await this.getWidget(uri);
-        this.app.shell.activateMain(widget.id);
+        this.app.shell.activateWidget(widget.id);
         return widget;
     }
 
@@ -66,7 +66,7 @@ export class MarkdownPreviewOpenHandler implements OpenHandler {
         widget.title.label = `Preview '${uri.path.base}'`;
         widget.title.caption = widget.title.label;
         widget.title.closable = true;
-        this.app.shell.addToMainArea(widget);
+        this.app.shell.addWidget(widget, { area: 'main' });
         return widget;
     }
 
