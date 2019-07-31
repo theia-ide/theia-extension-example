@@ -20,7 +20,7 @@
   },
   "scripts": {
     "prepare": "theia generate --target=browser && theia build",
-    "start": "theia browser",
+    "start": "theia start",
     "watch": "theia build --watch"
   }
 }
